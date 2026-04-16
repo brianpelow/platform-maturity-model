@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-04-16T04:47:18.176262+00:00",
+  "date": "2026-04-16",
+  "overall_level": 3,
+  "overall_score": 2.52,
+  "level_name": "Defined",
+  "domains": [
+    {
+      "domain": "Delivery",
+      "level": 3
+    },
+    {
+      "domain": "Reliability",
+      "level": 3
+    },
+    {
+      "domain": "Security",
+      "level": 3
+    },
+    {
+      "domain": "Developer Experience",
+      "level": 2
+    },
+    {
+      "domain": "Observability",
+      "level": 1
+    },
+    {
+      "domain": "Governance",
+      "level": 3
+    }
+  ],
+  "roadmap": [
+    "[Observability] Implement: Metrics dashboards",
+    "[Observability] Implement: Basic alerts",
+    "[Developer Experience] Implement: Developer portal",
+    "[Developer Experience] Implement: Golden paths",
+    "[Delivery] Implement: Elite DORA metrics"
+  ]
+}
