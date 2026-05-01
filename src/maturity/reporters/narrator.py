@@ -16,8 +16,8 @@ def generate_narrative(assessment: MaturityAssessment, config: MaturityConfig) -
 
 def _ai_narrative(assessment: MaturityAssessment, config: MaturityConfig) -> str:
     try:
-        import anthropic
-        client = anthropic.Anthropic(api_key=config.anthropic_api_key)
+        from openai import OpenAI
+        client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=config.openrouter_api_key)
 
         domain_summary = "\n".join(
             f"- {d.domain}: Level {d.assessed_level}/5 ({d.confidence} confidence)"
@@ -46,28 +46,28 @@ Write a 4-paragraph executive assessment:
 Write for a CTO/board audience. Be specific about {config.industry} implications (regulatory, competitive, operational).
 Be honest, data-driven, and actionable."""
 
-        message = client.messages.create(
-            model="claude-sonnet-4-20250514",
+        message = client.chat.completions.create(
+            model="meta-llama/llama-3.1-8b-instruct:free",
             max_tokens=700,
             messages=[{"role": "user", "content": prompt}],
         )
-        return message.content[0].text
+        return message.choices[0].message.content
     except Exception:
         return _template_narrative(assessment)
 
 
 def _template_narrative(assessment: MaturityAssessment) -> str:
     posture = {
-        1: "nascent — significant foundational investment required",
-        2: "developing — basic capabilities established, standardization needed",
-        3: "established — solid foundation, optimization opportunities ahead",
-        4: "advanced — data-driven and proactive, approaching industry leadership",
-        5: "industry-leading — continuous improvement and AI-augmentation achieved",
+        1: "nascent â€” significant foundational investment required",
+        2: "developing â€” basic capabilities established, standardization needed",
+        3: "established â€” solid foundation, optimization opportunities ahead",
+        4: "advanced â€” data-driven and proactive, approaching industry leadership",
+        5: "industry-leading â€” continuous improvement and AI-augmentation achieved",
     }.get(assessment.overall_level, "developing")
 
     return f"""## Platform Engineering Maturity Assessment
 
-**Overall maturity: Level {assessment.overall_level}/5 — {assessment.level_name}**
+**Overall maturity: Level {assessment.overall_level}/5 â€” {assessment.level_name}**
 
 The {assessment.org or "engineering organization"} platform engineering capability is **{posture}**.
 The overall maturity score of {assessment.overall_score:.1f}/5.0 reflects a {assessment.level_name.lower()} state

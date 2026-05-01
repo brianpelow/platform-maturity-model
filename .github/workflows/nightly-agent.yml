@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
       - name: Run self-assessment
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: uv run python scripts/nightly_agent.py
       - name: Commit assessment
         run: |

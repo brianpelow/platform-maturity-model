@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "platform-maturity-model"
 version = "0.1.0"
-description = "Open framework and CLI for assessing platform engineering maturity — 5-level model with automated evidence collection"
+description = "Open framework and CLI for assessing platform engineering maturity â€” 5-level model with automated evidence collection"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.12"
@@ -17,7 +17,7 @@ dependencies = [
     "rich>=13.7.0",
     "typer>=0.12.0",
     "pyyaml>=6.0.1",
-    "anthropic>=0.28.0",
+    "openai>=1.30.0",
     "jinja2>=3.1.4",
 ]
 

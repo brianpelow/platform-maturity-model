@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 class MaturityConfig(BaseModel):
     """Runtime configuration for platform-maturity-model."""
 
-    anthropic_api_key: str = Field("", description="Anthropic API key")
+    openrouter_api_key: str = Field("", description="OpenRouter API key")
     github_token: str = Field("", description="GitHub API token")
     industry: str = Field("fintech", description="Industry context")
     org: str = Field("", description="GitHub organization")
@@ -17,7 +17,7 @@ class MaturityConfig(BaseModel):
     @classmethod
     def from_env(cls) -> "MaturityConfig":
         return cls(
-            anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY", ""),
+            openrouter_api_key=os.environ.get("OPENROUTER_API_KEY", ""),
             github_token=os.environ.get("GITHUB_TOKEN", ""),
             industry=os.environ.get("MATURITY_INDUSTRY", "fintech"),
             org=os.environ.get("GITHUB_ORG", ""),
@@ -25,4 +25,4 @@ class MaturityConfig(BaseModel):
 
     @property
     def has_api_key(self) -> bool:
-        return bool(self.anthropic_api_key)
+        return bool(self.openrouter_api_key)
