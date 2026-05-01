@@ -22,7 +22,7 @@ jobs:
       - name: Commit assessment
         run: |
           git config user.name "platform-maturity-agent[bot]"
-          git config user.email "agent@platform-maturity-model"
+          git config user.email "bpelow7@gmail.com"
           git add -A
           git diff --staged --quiet || git commit -m "chore(agent): nightly self-assessment $(date -u +%Y-%m-%d)"
           git push
