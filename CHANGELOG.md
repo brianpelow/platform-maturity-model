@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+_Last assessed: 2026-10-02_
+
 _Last assessed: 2026-10-01_
 
 _Last assessed: 2026-09-30_
